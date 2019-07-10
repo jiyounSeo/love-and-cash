@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/bezant_core?characterEncoding=UTF-8&characterSetResults=UTF-8
+    url: jdbc:mysql://127.0.0.1:3306/loveandpeace?characterEncoding=UTF-8&characterSetResults=UTF-8
     username: root
     password: 1234qwer
     hikari:
@@ -11,7 +11,7 @@ spring:
       connection-timeout: 30000
       max-lifetime: 1800000
       initialization-fail-timeout: 0
-      pool-name: bezant_core
+      pool-name: loveandpeace
       data-source-properties:
         useServerPrepStmts: false     # (MYSQL) recommended for performance
         cachePrepStmts: true
