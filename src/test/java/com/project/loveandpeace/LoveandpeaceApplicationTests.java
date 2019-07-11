@@ -1,4 +1,4 @@
-package com.joanne.loveandpeace;
+package com.project.loveandpeace;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,7 +1,7 @@
-package com.joanne.loveandpeace;
+package com.project.loveandpeace;
 
-import com.joanne.loveandpeace.domain.Notice;
-import com.joanne.loveandpeace.repository.NoticeRepository;
+import com.project.loveandpeace.domain.Notice;
+import com.project.loveandpeace.repository.NoticeRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

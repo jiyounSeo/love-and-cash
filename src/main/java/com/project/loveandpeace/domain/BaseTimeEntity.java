@@ -1,4 +1,4 @@
-package com.joanne.loveandpeace.domain;
+package com.project.loveandpeace.domain;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;

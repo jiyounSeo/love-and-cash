@@ -1,6 +1,6 @@
-package com.joanne.loveandpeace.repository;
+package com.project.loveandpeace.repository;
 
-import com.joanne.loveandpeace.domain.Notice;
+import com.project.loveandpeace.domain.Notice;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
