@@ -2,6 +2,7 @@ package com.project.loveandpeace.domain;
 
 import com.project.loveandpeace.domain.enumeration.AccountType;
 import com.project.loveandpeace.domain.enumeration.AccountCategory;
+import com.project.loveandpeace.domain.enumeration.ObjectType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,4 +21,5 @@ public class AccountBook extends BaseTimeEntity{
     private String usingDate;
 
     //TODO :: 사용자 타입 추가 (남, 녀 공용)
+    private ObjectType objectType;
 }
