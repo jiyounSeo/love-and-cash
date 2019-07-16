@@ -3,6 +3,7 @@ package com.project.loveandpeace.controller.budget;
 import com.project.loveandpeace.controller.budget.mapper.BudgetDetailMapper;
 import com.project.loveandpeace.controller.budget.mapper.BudgetMapper;
 import com.project.loveandpeace.controller.budget.request.BudgetDetailRequest;
+import com.project.loveandpeace.controller.budget.request.BudgetDetailResult;
 import com.project.loveandpeace.controller.budget.request.BudgetRequest;
 import com.project.loveandpeace.domain.Budget;
 import com.project.loveandpeace.domain.BudgetDetail;
@@ -34,9 +35,10 @@ public class BudgetController {
     }
 
     @PostMapping("{budgetId}/budgetDetail")
-    public BudgetDetail createBudgetDetail(@PathVariable Long budgetId, @RequestBody BudgetDetailRequest budgetDetailRequest) {
+    public BudgetDetailResult createBudgetDetail(@PathVariable Long budgetId, @RequestBody BudgetDetailRequest budgetDetailRequest) {
         BudgetDetail budgetDetail = budgetDetailMapper.requestToEntity(budgetId, budgetDetailRequest);
-        return budgetDetailRepository.save(budgetDetail);
+        budgetDetailRepository.save(budgetDetail);
+        return budgetDetailMapper.entityToResponse(budgetDetail);
     }
 
     @PutMapping("{budgetId}/budgetDetail")

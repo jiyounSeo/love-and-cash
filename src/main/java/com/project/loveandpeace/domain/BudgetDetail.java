@@ -19,15 +19,17 @@ public class BudgetDetail {
     @Column(name="budget_detail_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long budgetId;
-    private OutgoingCategory outgoingType;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "budget_id")
+    private Budget budget;
+    private OutgoingCategory outgoingCategory;
     private BigDecimal price;
     private String description;
 
     @Builder
-    public BudgetDetail(Long budgetId, OutgoingCategory outgoingType, BigDecimal price, String description) {
-        this.budgetId = budgetId;
-        this.outgoingType = outgoingType;
+    public BudgetDetail(Budget budget, OutgoingCategory outgoingCategory, BigDecimal price, String description) {
+        this.budget = budget;
+        this.outgoingCategory = outgoingCategory;
         this.price = price;
         this.description = description;
     }
