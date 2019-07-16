@@ -1,5 +1,6 @@
 package com.project.loveandpeace.controller.accountBook;
 
+import com.project.loveandpeace.common.enumeration.SaveState;
 import com.project.loveandpeace.controller.accountBook.mapper.AccountBookMapper;
 import com.project.loveandpeace.controller.accountBook.request.AccountBookRequest;
 import com.project.loveandpeace.controller.accountBook.request.AccountBookSearchRequest;
@@ -33,15 +34,21 @@ public class AccountBookController {
         return accountBookMapper.entityListToResultList(accountBooks, pageable);
     }
 
+    @GetMapping("{accountBookId}")
+    public AccountBookResult accountBook(@PathVariable Long accountBookId) {
+        AccountBook accountBook = accountBookRepository.findById(accountBookId).orElseThrow(RuntimeException::new);
+        return accountBookMapper.entityToResult(accountBook);
+    }
+
     @PostMapping
     public AccountBookResult registAccountBook(@RequestBody AccountBookRequest request) {
-        AccountBook accountBook = accountBookService.registAccountBook(accountBookMapper.requestToEntity(request));
+        AccountBook accountBook = accountBookService.registAccountBook(accountBookMapper.requestToEntity(SaveState.NEW, request));
         return accountBookMapper.entityToResult(accountBook);
     }
 
     @PutMapping
     public AccountBookResult updateAccountBook(@RequestBody AccountBookRequest request) {
-        AccountBook accountBook = accountBookService.updateAccountBook(accountBookMapper.requestToEntity(request));
+        AccountBook accountBook = accountBookService.updateAccountBook(accountBookMapper.requestToEntity(SaveState.UPDATE, request));
         return accountBookMapper.entityToResult(accountBook);
     }
 }

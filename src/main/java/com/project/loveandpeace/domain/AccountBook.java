@@ -6,12 +6,17 @@ import com.project.loveandpeace.domain.enumeration.ObjectType;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Getter
 @Setter
+@Entity
 public class AccountBook extends BaseTimeEntity{
 
+    @Id
+    @Column(name="account_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private AccountType type;

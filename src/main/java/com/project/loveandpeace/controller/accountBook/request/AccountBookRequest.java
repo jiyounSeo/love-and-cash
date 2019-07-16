@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 public class AccountBookRequest {
+    private Long id;
     private String title;
     private AccountType type;
     private AccountCategory category;
