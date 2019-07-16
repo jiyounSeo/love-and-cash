@@ -1,7 +1,7 @@
 package com.project.loveandpeace.controller.accountBook.request;
 
-import com.project.loveandpeace.domain.enumeration.AccountCategory;
 import com.project.loveandpeace.domain.enumeration.AccountType;
+import com.project.loveandpeace.domain.enumeration.OutgoingCategory;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,7 +13,7 @@ public class AccountBookRequest {
     private Long id;
     private String title;
     private AccountType type;
-    private AccountCategory category;
+    private OutgoingCategory category;
     private BigDecimal price;
     private String description;
     private String usingDate;
