@@ -35,5 +35,8 @@ dependencies {
     implementation 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.0'
     implementation('org.springframework.boot:spring-boot-starter-thymeleaf')
     implementation ('nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:2.3.0')
+    implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+    implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+
 
 }
