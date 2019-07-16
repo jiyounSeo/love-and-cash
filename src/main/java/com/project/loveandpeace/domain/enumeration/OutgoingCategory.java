@@ -1,6 +1,6 @@
 package com.project.loveandpeace.domain.enumeration;
 
-public enum OutgoingCategory  {
+public enum OutgoingCategory implements AccountCategory{
     FOOD(0,"식비"),
     ALCOHOL(1,"술"),
     BEVERAGE(2,"음료"),
