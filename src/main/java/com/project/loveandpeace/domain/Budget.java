@@ -7,6 +7,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,6 +23,9 @@ public class Budget {
     private String budgetMonth;
     private BigDecimal price;
     private String description;
+
+    @OneToMany(mappedBy = "budget", fetch = FetchType.LAZY)
+    private List<Budget> budget = new ArrayList<>();
 
 
     @Builder
