@@ -1,6 +1,6 @@
 package com.project.loveandpeace.domain.enumeration;
 
-public enum OutgoingType implements AccountCategory {
+public enum OutgoingCategory implements AccountCategory {
     FOOD(0,"식비"),
     ALCOHOL(1,"술"),
     BEVERAGE(2,"음료"),
@@ -24,7 +24,7 @@ public enum OutgoingType implements AccountCategory {
     private Integer code;
     private String description;
 
-    OutgoingType(int code, String description) {
+    OutgoingCategory(int code, String description) {
         this.code = code;
         this.description = description;
     }
