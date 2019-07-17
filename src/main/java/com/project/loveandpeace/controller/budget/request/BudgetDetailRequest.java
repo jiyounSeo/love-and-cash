@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 @Setter
 public class BudgetDetailRequest {
     private Long budgetDetailId;
-    private OutgoingCategory outgoingType;
+    private OutgoingCategory outgoingCategory;
     private BigDecimal price;
     private String description;
 }

@@ -19,7 +19,7 @@ public class BudgetDetailMapper {
         Budget budget = budgetRepository.findById(budgetId).orElseThrow(RuntimeException::new);
         return BudgetDetail.builder().budget(budget)
                 .description(budgetDetailRequest.getDescription())
-                .outgoingType(budgetDetailRequest.getOutgoingType())
+                .outgoingCategory(budgetDetailRequest.getOutgoingCategory())
                 .price(budgetDetailRequest.getPrice())
                 .build();
     }
@@ -30,7 +30,7 @@ public class BudgetDetailMapper {
                 .orElseThrow(RuntimeException::new);
         budgetDetail.setPrice(budgetDetailRequest.getPrice());
         budgetDetail.setDescription(budgetDetailRequest.getDescription());
-        budgetDetail.setOutgoingType(budgetDetail.getOutgoingType());
+        budgetDetail.setOutgoingCategory(budgetDetailRequest.getOutgoingCategory());
         return budgetDetail;
 
     }
