@@ -10,10 +10,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 @RequiredArgsConstructor
 public class AccountBookMapper implements RequestEntityMapper<AccountBookRequest, AccountBook> {
     private final AccountBookRepository accountBookRepository;
@@ -22,11 +24,12 @@ public class AccountBookMapper implements RequestEntityMapper<AccountBookRequest
         AccountBookResult accountBookResult = new AccountBookResult();
         accountBookResult.setTitle(accountBook.getTitle());
         accountBookResult.setType(accountBook.getType());
-        accountBookResult.setCategory(accountBook.getCategory());
+        accountBookResult.setIncomeCategory(accountBook.getIncomeCategory());
+        accountBookResult.setOutgoingCategory(accountBook.getOutgoingCategory());
         accountBookResult.setPrice(accountBook.getPrice());
         accountBookResult.setDescription(accountBook.getDescription());
         accountBookResult.setUsingDate(accountBook.getUsingDate());
-
+        accountBookResult.setObjectType(accountBook.getObjectType());
         return accountBookResult;
     }
 
@@ -58,11 +61,12 @@ public class AccountBookMapper implements RequestEntityMapper<AccountBookRequest
     private AccountBook domainMapper(AccountBook accountBook, AccountBookRequest request) {
         accountBook.setTitle(request.getTitle());
         accountBook.setType(request.getType());
-        accountBook.setCategory(request.getCategory());
+        accountBook.setOutgoingCategory(request.getOutgoingCategory());
+        accountBook.setIncomeCategory(request.getIncomeCategory());
         accountBook.setPrice(request.getPrice());
         accountBook.setDescription(request.getDescription());
         accountBook.setUsingDate(request.getUsingDate());
-
+        accountBook.setObjectType(request.getObjectType());
         return accountBook;
     }
 }

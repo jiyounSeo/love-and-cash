@@ -4,9 +4,11 @@ import com.project.loveandpeace.controller.accountBook.request.AccountBookSearch
 import com.project.loveandpeace.domain.AccountBook;
 import com.project.loveandpeace.domain.enumeration.AccountType;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Component;
 
 import static org.springframework.data.jpa.domain.Specification.where;
 
+@Component
 public class AccountBookSpecification extends BaseSpecification<AccountBook, AccountBookSearchRequest>{
     private static String ACCOUNT_BOOK_TYPE = "type";
 
