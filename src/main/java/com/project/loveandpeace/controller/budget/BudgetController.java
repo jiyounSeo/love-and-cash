@@ -5,6 +5,7 @@ import com.project.loveandpeace.controller.budget.mapper.BudgetMapper;
 import com.project.loveandpeace.controller.budget.request.BudgetDetailRequest;
 import com.project.loveandpeace.controller.budget.request.BudgetDetailResult;
 import com.project.loveandpeace.controller.budget.request.BudgetRequest;
+import com.project.loveandpeace.controller.budget.result.BudgetResponse;
 import com.project.loveandpeace.domain.Budget;
 import com.project.loveandpeace.domain.BudgetDetail;
 import com.project.loveandpeace.repository.BudgetDetailRepository;
@@ -45,6 +46,13 @@ public class BudgetController {
     public BudgetDetail updateBudgetDetail(@PathVariable Long budgetId, @RequestBody BudgetDetailRequest budgetDetailRequest) {
         BudgetDetail budgetDetail = budgetDetailMapper.updateRequestToEntity(budgetId, budgetDetailRequest);
         return budgetDetailRepository.save(budgetDetail);
+    }
+
+    @GetMapping("{budgetId}")
+    public BudgetResponse getBudget(@PathVariable Long budgetId) {
+        Budget budget = budgetRepository.findById(budgetId).orElseThrow(RuntimeException::new);
+        return budgetMapper.entityToResponse(budget);
+
     }
 
 

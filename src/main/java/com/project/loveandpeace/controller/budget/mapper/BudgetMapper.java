@@ -1,6 +1,7 @@
 package com.project.loveandpeace.controller.budget.mapper;
 
 import com.project.loveandpeace.controller.budget.request.BudgetRequest;
+import com.project.loveandpeace.controller.budget.result.BudgetResponse;
 import com.project.loveandpeace.domain.Budget;
 import com.project.loveandpeace.repository.BudgetRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,5 +26,14 @@ public class BudgetMapper {
                 .budgetMonth(budgetRequest.getBudgetMonth())
                 .description(budgetRequest.getDescription())
                 .build();
+    }
+
+    public BudgetResponse entityToResponse(Budget budget) {
+        BudgetResponse budgetResponse = new BudgetResponse();
+        budgetResponse.setBudgetMonth(budget.getBudgetMonth());
+        budgetResponse.setDescription(budget.getDescription());
+        budgetResponse.setPrice(budget.getPrice());
+        return budgetResponse;
+
     }
 }
