@@ -42,7 +42,7 @@ public class AccountBookController {
 
     @PostMapping
     public AccountBookResult registAccountBook(@RequestBody AccountBookRequest request) {
-        AccountBook accountBook = accountBookService.registAccountBook(accountBookMapper.requestToEntity(SaveState.NEW, request));
+        AccountBook accountBook = accountBookService.registAccountBook(accountBookMapper.requestToEntity(request));
         return accountBookMapper.entityToResult(accountBook);
     }
 
