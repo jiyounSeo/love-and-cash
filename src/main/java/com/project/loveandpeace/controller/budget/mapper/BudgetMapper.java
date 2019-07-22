@@ -1,8 +1,10 @@
 package com.project.loveandpeace.controller.budget.mapper;
 
+import com.project.loveandpeace.common.enumeration.RestApplicationType;
 import com.project.loveandpeace.controller.budget.request.BudgetRequest;
 import com.project.loveandpeace.controller.budget.result.BudgetResponse;
 import com.project.loveandpeace.domain.Budget;
+import com.project.loveandpeace.exception.RestException;
 import com.project.loveandpeace.repository.BudgetRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -14,7 +16,7 @@ public class BudgetMapper {
 
     public Budget updateRequestToEntity(BudgetRequest budgetRequest) {
         Budget budget = budgetRepository.findByIdAndBudgetMonth(budgetRequest.getBudgetId(), budgetRequest.getBudgetMonth())
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(() -> new RestException(RestApplicationType.NOT_FOUND_BUDGET));
         budget.setPrice(budgetRequest.getPrice());
         budget.setDescription(budgetRequest.getDescription());
         return budget;
