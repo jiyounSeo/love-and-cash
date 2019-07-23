@@ -43,4 +43,8 @@ public class AccountBook {
         this.usingDate = usingDate;
     }
     */
+
+    public boolean isIncomeType() {
+        return this.type == AccountType.INCOME;
+    }
 }
