@@ -7,7 +7,8 @@ public enum IncomeCategory implements AccountCategory {
     BONUS(3, "상여"),
     FINANCE(4, "금융소득"),
     GIFT_CARD(5, "상품권"),
-    ETC(6, "기타")
+    INSURANCE(6, "보험비"),
+    ETC(99, "기타")
     ;
 
     private Integer code;
