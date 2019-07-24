@@ -20,6 +20,6 @@ public class AccountBookSpecification extends BaseSpecification<AccountBook, Acc
     }
 
     private Specification<AccountBook> typeEquals(AccountType accountType) {
-        return attributeEquals(ACCOUNT_BOOK_TYPE, accountType.toString());
+        return attributeEquals(ACCOUNT_BOOK_TYPE, accountType);
     }
 }

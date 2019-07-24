@@ -4,12 +4,12 @@ import com.project.loveandpeace.domain.enumeration.AccountType;
 import com.project.loveandpeace.domain.enumeration.IncomeCategory;
 import com.project.loveandpeace.domain.enumeration.ObjectType;
 import com.project.loveandpeace.domain.enumeration.OutgoingCategory;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -30,6 +30,8 @@ public class AccountBook {
 
     //TODO :: 직관적인 네이밍 없을 까요? .. (paymentType..?)
     private ObjectType objectType;
+    private LocalDateTime createDt;
+    private LocalDateTime modifyDt;
 
     /*
     @Builder

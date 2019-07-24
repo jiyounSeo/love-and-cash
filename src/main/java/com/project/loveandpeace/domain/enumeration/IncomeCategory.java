@@ -1,6 +1,6 @@
 package com.project.loveandpeace.domain.enumeration;
 
-public enum IncomeCategory implements AccountCategory {
+public enum IncomeCategory {
     SALARY(0, "월급"),
     ADDITIONAL_INCOME(1, "부수입"),
     POCKET_MONEY(2, "용돈"),
