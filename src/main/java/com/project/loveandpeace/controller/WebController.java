@@ -11,5 +11,4 @@ public class WebController {
     public String main() {
         return "index";
     }
-
 }
