@@ -1,5 +1,7 @@
 CREATE DATABASE `loveandcash` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
+USE `loveandcash`;
+
 CREATE TABLE `account_book` (
   `account_id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(45) NOT NULL,

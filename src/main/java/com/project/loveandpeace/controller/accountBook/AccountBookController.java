@@ -27,7 +27,7 @@ public class AccountBookController {
     private final AccountBookService accountBookService;
 
     @GetMapping
-    public Page<AccountBookResult> accountBookList(@PageableDefault(
+    public Page<AccountBookResult> getAccountBookList(@PageableDefault(
             sort = {"createDt"},
             direction = Sort.Direction.DESC) Pageable pageable, AccountBookSearchRequest request) {
         Page<AccountBook> accountBooks = accountBookRepository.findAll(accountBookSpecification.getFilterForList(request),pageable);
@@ -35,7 +35,7 @@ public class AccountBookController {
     }
 
     @GetMapping("{accountBookId}")
-    public AccountBookResult accountBook(@PathVariable Long accountBookId) {
+    public AccountBookResult getAccountBook(@PathVariable Long accountBookId) {
         AccountBook accountBook = accountBookRepository.findById(accountBookId).orElseThrow(RuntimeException::new);
         return accountBookMapper.entityToResult(accountBook);
     }

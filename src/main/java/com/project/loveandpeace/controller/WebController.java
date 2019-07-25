@@ -11,4 +11,9 @@ public class WebController {
     public String main() {
         return "index";
     }
+
+    @GetMapping("/accountBook")
+    public String accountBook() {
+        return "accountBook";
+    }
 }
