@@ -25,7 +25,7 @@ public class Budget {
     private String description;
 
     @OneToMany(mappedBy = "budget", fetch = FetchType.LAZY)
-    private List<Budget> budget = new ArrayList<>();
+    private List<BudgetDetail> budgetDetails = new ArrayList<>();
 
 
     @Builder

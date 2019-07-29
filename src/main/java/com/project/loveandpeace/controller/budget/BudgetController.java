@@ -1,13 +1,15 @@
 package com.project.loveandpeace.controller.budget;
 
+import com.project.loveandpeace.common.enumeration.RestApplicationType;
 import com.project.loveandpeace.controller.budget.mapper.BudgetDetailMapper;
 import com.project.loveandpeace.controller.budget.mapper.BudgetMapper;
 import com.project.loveandpeace.controller.budget.request.BudgetDetailRequest;
-import com.project.loveandpeace.controller.budget.request.BudgetDetailResult;
 import com.project.loveandpeace.controller.budget.request.BudgetRequest;
+import com.project.loveandpeace.controller.budget.result.BudgetDetailResponse;
 import com.project.loveandpeace.controller.budget.result.BudgetResponse;
 import com.project.loveandpeace.domain.Budget;
 import com.project.loveandpeace.domain.BudgetDetail;
+import com.project.loveandpeace.exception.RestException;
 import com.project.loveandpeace.repository.BudgetDetailRepository;
 import com.project.loveandpeace.repository.BudgetRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,36 +26,43 @@ public class BudgetController {
     private final BudgetDetailRepository budgetDetailRepository;
 
     @PostMapping
-    public Budget createBudget(@RequestBody BudgetRequest budgetRequest) {
+    public BudgetResponse createBudget(@RequestBody BudgetRequest budgetRequest) {
         Budget budget = budgetMapper.requestToEntity(budgetRequest);
-        return budgetRepository.save(budget);
+        return budgetMapper.entityToResponse(budgetRepository.save(budget));
     }
 
     @PutMapping
-    public Budget updateBudget(@RequestBody BudgetRequest budgetRequest) {
+    public BudgetResponse updateBudget(@RequestBody BudgetRequest budgetRequest) {
         Budget budget = budgetMapper.updateRequestToEntity(budgetRequest);
-        return budgetRepository.save(budget);
+        return budgetMapper.entityToResponse(budgetRepository.save(budget));
     }
 
     @PostMapping("{budgetId}/budgetDetail")
-    public BudgetDetailResult createBudgetDetail(@PathVariable Long budgetId, @RequestBody BudgetDetailRequest budgetDetailRequest) {
+    public BudgetDetailResponse createBudgetDetail(@PathVariable Long budgetId, @RequestBody BudgetDetailRequest budgetDetailRequest) {
         BudgetDetail budgetDetail = budgetDetailMapper.requestToEntity(budgetId, budgetDetailRequest);
         budgetDetailRepository.save(budgetDetail);
         return budgetDetailMapper.entityToResponse(budgetDetail);
     }
 
     @PutMapping("{budgetId}/budgetDetail")
-    public BudgetDetail updateBudgetDetail(@PathVariable Long budgetId, @RequestBody BudgetDetailRequest budgetDetailRequest) {
+    public BudgetDetailResponse updateBudgetDetail(@PathVariable Long budgetId, @RequestBody BudgetDetailRequest budgetDetailRequest) {
         BudgetDetail budgetDetail = budgetDetailMapper.updateRequestToEntity(budgetId, budgetDetailRequest);
-        return budgetDetailRepository.save(budgetDetail);
+        budgetDetailRepository.save(budgetDetail);
+        return budgetDetailMapper.entityToResponse(budgetDetail);
     }
 
     @GetMapping("{budgetId}")
     public BudgetResponse getBudget(@PathVariable Long budgetId) {
-        Budget budget = budgetRepository.findById(budgetId).orElseThrow(RuntimeException::new);
+        Budget budget = budgetRepository.findById(budgetId).orElseThrow(() -> new RestException(RestApplicationType.NOT_FOUND_BUDGET));
         return budgetMapper.entityToResponse(budget);
-
     }
+
+    @GetMapping("budgetDetail/{budgetDetailId}")
+    public BudgetDetailResponse getBudgetDetail(@PathVariable Long budgetDetailId) {
+        BudgetDetail budgetDetail = budgetDetailRepository.findById(budgetDetailId).orElseThrow(() -> new RestException(RestApplicationType.NOT_FOUND_BUDGET_DETAIL));
+        return budgetDetailMapper.entityToResponse(budgetDetail);
+    }
+
 
 
 }

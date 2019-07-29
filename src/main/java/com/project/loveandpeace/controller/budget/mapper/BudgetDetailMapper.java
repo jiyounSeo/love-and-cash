@@ -2,7 +2,7 @@ package com.project.loveandpeace.controller.budget.mapper;
 
 import com.project.loveandpeace.common.enumeration.RestApplicationType;
 import com.project.loveandpeace.controller.budget.request.BudgetDetailRequest;
-import com.project.loveandpeace.controller.budget.request.BudgetDetailResult;
+import com.project.loveandpeace.controller.budget.result.BudgetDetailResponse;
 import com.project.loveandpeace.domain.Budget;
 import com.project.loveandpeace.domain.BudgetDetail;
 import com.project.loveandpeace.exception.RestException;
@@ -37,10 +37,13 @@ public class BudgetDetailMapper {
 
     }
 
-    public BudgetDetailResult entityToResponse(BudgetDetail budgetDetail) {
-        BudgetDetailResult result = new BudgetDetailResult();
-        result.setBudgetDetailId(budgetDetail.getId());
+    public BudgetDetailResponse entityToResponse(BudgetDetail budgetDetail) {
+        BudgetDetailResponse result = new BudgetDetailResponse();
         result.setBudgetId(budgetDetail.getBudget().getId());
+        result.setBudgetDetailId(budgetDetail.getId());
+        result.setDescription(budgetDetail.getDescription());
+        result.setOutgoingCategory(budgetDetail.getOutgoingCategory());
+        result.setPrice(budgetDetail.getPrice());
         return result;
 
     }

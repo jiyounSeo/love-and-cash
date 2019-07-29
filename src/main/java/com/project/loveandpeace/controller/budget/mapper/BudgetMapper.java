@@ -9,10 +9,14 @@ import com.project.loveandpeace.repository.BudgetRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.stream.Collectors;
+
 @Component
 @RequiredArgsConstructor
 public class BudgetMapper {
     private final BudgetRepository budgetRepository;
+    private final BudgetDetailMapper budgetDetailMapper;
+
 
     public Budget updateRequestToEntity(BudgetRequest budgetRequest) {
         Budget budget = budgetRepository.findByIdAndBudgetMonth(budgetRequest.getBudgetId(), budgetRequest.getBudgetMonth())
@@ -35,6 +39,7 @@ public class BudgetMapper {
         budgetResponse.setBudgetMonth(budget.getBudgetMonth());
         budgetResponse.setDescription(budget.getDescription());
         budgetResponse.setPrice(budget.getPrice());
+        budgetResponse.setBudgetDetails(budget.getBudgetDetails().stream().map(budgetDetailMapper::entityToResponse).collect(Collectors.toList()));
         return budgetResponse;
 
     }
