@@ -8,7 +8,8 @@ public enum RestApplicationType {
 
     SUCCESS_REQUEST("0000", HttpStatus.OK, "success"),
     NOT_FOUND_BUDGET("1000", HttpStatus.BAD_REQUEST , "not found budget"),
-    NOT_FOUND_BUDGET_DETAIL("1001", HttpStatus.BAD_REQUEST , "not found budget detail")
+    NOT_FOUND_BUDGET_DETAIL("1001", HttpStatus.BAD_REQUEST , "not found budget detail"),
+    BUDGET_LIMIT_OVER("1002", HttpStatus.BAD_REQUEST, "budget limit over.")
     ;
 
     private final String code;

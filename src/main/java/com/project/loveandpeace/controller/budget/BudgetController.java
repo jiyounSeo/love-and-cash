@@ -12,6 +12,7 @@ import com.project.loveandpeace.domain.BudgetDetail;
 import com.project.loveandpeace.exception.RestException;
 import com.project.loveandpeace.repository.BudgetDetailRepository;
 import com.project.loveandpeace.repository.BudgetRepository;
+import com.project.loveandpeace.service.BudgetService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +25,7 @@ public class BudgetController {
     private final BudgetRepository budgetRepository;
     private final BudgetDetailMapper budgetDetailMapper;
     private final BudgetDetailRepository budgetDetailRepository;
+    private final BudgetService budgetService;
 
     @PostMapping
     public BudgetResponse createBudget(@RequestBody BudgetRequest budgetRequest) {
@@ -47,6 +49,7 @@ public class BudgetController {
     @PutMapping("{budgetId}/budgetDetail")
     public BudgetDetailResponse updateBudgetDetail(@PathVariable Long budgetId, @RequestBody BudgetDetailRequest budgetDetailRequest) {
         BudgetDetail budgetDetail = budgetDetailMapper.updateRequestToEntity(budgetId, budgetDetailRequest);
+        budgetService.checkBudgetLimit(budgetDetail);
         budgetDetailRepository.save(budgetDetail);
         return budgetDetailMapper.entityToResponse(budgetDetail);
     }
